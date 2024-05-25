@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Font Name', sans-serif;
+            padding-top: 100px; /* Adjust as needed */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+                footer {
+            text-align: right;
+            background-color: rgba(255,255,255,0.75);
+            color: #000000;
+            padding: 20px;
+            margin-top: auto;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://t4.ftcdn.net/jpg/07/03/80/39/360_F_703803915_lCTLu5geWkfuIVOv5DyYV6V2l7WGJvDY.jpg');
+            background-size: cover;
+            background-position: top;
+            z-index: -1;
+        }
+       .container {
+           margin-top: 50px;
+           background-color: #ffffff;
+           padding: 40px;
+           border-radius: 10px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+           position: relative;
+       }
+       h1 {
+           color: #006747;
+           margin-bottom: 30px;
+       }
+       h2 {
+           color: #006747;
+           margin-bottom: 30px;
+       }
+       h5 {
+           color: #FF0000;
+           margin-bottom: 30px;
+       }
+       /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.85);
+            border-radius: 0;
+            z-index: 1000; /* Ensure navbar stays above other content */
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #FFFFFF;
+        }
+       .navbar-brand:hover, .navbar-nav .nav-link:hover {
+           color: #a3bd8c !important;
+       }
+        nav a {
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+        nav li a {
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+        nav li button{
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+        .nav-item {
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+       .icon-image {
+           max-height: 70px; /* Adjust based on your image's size */
+           width: auto;
+       }
+       #signInButton {
+           background-color: #006747; /* Dark green background */
+           color: #FFFFFF; /* White text */
+           border: none; /* Removes the default border */
+           padding: 10px 20px; /* Adds some padding for better appearance */
+           text-align: center;
+           text-decoration: none;
+           display: inline-block;
+           font-size: 16px;
+           margin: 4px 2px;
+           cursor: pointer;
+           border-radius: 5px; /* Optional: Adds rounded corners */
+       }
+
+       #signInButton:hover {
+           opacity: 0.8; /* Optional: Adds a hover effect to make the button slightly transparent on hover */
+       }
+    </style>
+</head>
+<body>
+<div class="background-image"></div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <form th:action="@{/}" method="get">
+            <a href="javascript:;" onclick="this.closest('form').submit();">
+                <img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" style="border: none; outline: none;">
+            </a>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}"><b>Register</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/activate}"><b>Activate Account</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}"><b>Login</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" style="max-width: 605px; height: auto;" >
+    <div class="container text-center">
+        <div style="background-color: #FFE7E7;">
+            <b><h5>Activation Failed.</br> Information Does Not Match Existing Record.</h5></b>
+        </div>
+        <div>
+            <h2>Online Banking Activation</h2>
+        </div><br>
+        <form th:action="@{/process_activate}" th:object="${user}"
+              method="post" style="max-width: 600px; margin: 0 auto;">
+
+            <div class="m-3">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">E-mail:</label>
+                    <div class="col-8">
+                        <input type="email" th:field="*{email}" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Password:</label>
+                    <div class="col-8">
+                        <input type="password" th:field="*{password}" class="form-control" required minlength="6" maxlength="10"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">First Name:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{firstName}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Last Name:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{lastName}" class="form-control" required minlength="2" maxlength="20" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Account Number:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{accountNum}" class="form-control" required minlength="10" maxlength="10"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" id="signInButton">Activate</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<br>
+<br>
+<br>
+<footer>
+    <p>Created By: Alyssa Lopez, Jonathan Garcia, Abel Abebe, Mustafa Shahzad </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Welcome to Commerce Bank App!</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Font Name', sans-serif;
+            padding-top: 100px; /* Adjust as needed */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://t4.ftcdn.net/jpg/07/03/80/39/360_F_703803915_lCTLu5geWkfuIVOv5DyYV6V2l7WGJvDY.jpg');
+            background-size: cover;
+            background-position: top;
+            z-index: -1;
+        }
+         footer {
+            text-align: right;
+            background-color: rgba(255,255,255,0.75);
+            color: #000000;
+            padding: 20px;
+            margin-top: auto;
+        }
+       .container {
+           margin-top: 50px;
+           background-color: #ffffff;
+           padding: 40px;
+           border-radius: 10px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+           position: relative;
+       }
+       h1 {
+           color: #0056b3;
+           margin-bottom: 30px;
+       }
+       a {
+           color: #FFFFFF;
+           text-decoration: none;
+           transition: color 0.3s ease;
+       }
+       a:hover, a:focus {
+           color: #FFFFFF;
+           text-decoration: underline;
+       }
+       h3 {
+           margin: 20px 0;
+       }
+       .logo-container {
+           margin-bottom: 30px;
+       }
+       .logo-image {
+           max-width: 605px; /* Adjust based on your image's size */
+           height: auto;
+       }
+       .icon-image {
+           max-height: 70px; /* Adjust based on your image's size */
+           width: auto;
+       }
+       /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.85);
+            border-radius: 0;
+            z-index: 1000; /* Ensure navbar stays above other content */
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #FFFFFF;
+        }
+       .navbar-brand:hover, .navbar-nav .nav-link:hover {
+           color: #a3bd8c !important;
+       }
+        nav a {
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+        nav li a {
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+        nav li button{
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+        .nav-item {
+            color: #006747 !important;
+            font-size: 20px !important;
+            font: courier !important;
+        }
+    </style>
+</head>
+<body>
+<div class="background-image"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" ></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}"><b>Register</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/activate}"><b>Activate Account</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}"><b>Login</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" class="logo-image" >
+    <div style="text-align: center; background-color: #FFE7E7;">
+        <strong><p>WRONG CODE</p></strong>
+    </div>
+    <br>
+    <form th:action="@{/forgot}" th:object="${user}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label"><b>Your Code: </b></label>
+                <div class="col-8">
+                    <input type="text" name="inputOtp" id="inputOtp" class="form-control" minlength="6" maxlength="6"/>
+                </div>
+            </div>
+            <div>
+                <button type="submit" id="signInButton">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<footer>
+    <p>Created By: Alyssa Lopez, Jonathan Garcia, Abel Abebe, Mustafa Shahzad </p>
+</footer>
+</body>
+</html>
